@@ -1,0 +1,13 @@
+html, body {
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.grid {
+    flex: 1 0 6.25%;
+}
