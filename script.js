@@ -2,6 +2,7 @@ const body = document.querySelector("body");
 const container = document.querySelector("#container");
 const divbtn = document.createElement("div");
 const btn = document.createElement("button");
+const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 let input = '';
 
 function newGrid(square) {
@@ -12,7 +13,9 @@ function newGrid(square) {
         div.style.flex = `0 0 ${basis}`;
         div.style.aspectRatio = "1 / 1";
         div.addEventListener("mouseenter", (e) => {
-            e.target.style.background = "blue";
+            e.target.style.background = `rgb(${randomBetween(0,255)},
+                                             ${randomBetween(0,255)},
+                                             ${randomBetween(0,255)})`;
         })
         container.appendChild(div)
     }
@@ -23,6 +26,7 @@ btn.addEventListener("click", () => {
     input = prompt("Type the desired size:", "16");
     newGrid(input);
 })
+
 divbtn.appendChild(btn);
 body.insertBefore(divbtn, body.firstChild);
 newGrid(16);
