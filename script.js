@@ -5,11 +5,12 @@ const btn = document.createElement("button");
 let input = '';
 
 function newGrid(square) {
+    container.innerHTML = '';
+    let basis = `${100/square}%`;
     for (let i = (square*square);i > 0; i--) {
         const div = document.createElement("div");
-        let basis = `${100/square}%`;
-        console.log(basis);
-        div.style.flex = 1, 0, "auto";
+        div.style.flex = `0 0 ${basis}`;
+        div.style.aspectRatio = "1 / 1";
         div.addEventListener("mouseenter", (e) => {
             e.target.style.background = "blue";
         })
@@ -24,3 +25,4 @@ btn.addEventListener("click", () => {
 })
 divbtn.appendChild(btn);
 body.insertBefore(divbtn, body.firstChild);
+newGrid(16);
