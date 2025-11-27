@@ -5,6 +5,12 @@ const btn = document.createElement("button");
 const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
 let input = '';
 
+function gradualOpacity(t) {
+    const currentOpacity = parseFloat(t.style.opacity) || 0;
+    const increase = Math.min(currentOpacity + 0.1, 1);
+    return increase;
+}
+
 function newGrid(square) {
     container.innerHTML = '';
     let basis = `${100/square}%`;
@@ -16,6 +22,7 @@ function newGrid(square) {
             e.target.style.background = `rgb(${randomBetween(0,255)},
                                              ${randomBetween(0,255)},
                                              ${randomBetween(0,255)})`;
+            e.target.style.opacity = gradualOpacity(e.target);
         })
         container.appendChild(div)
     }
